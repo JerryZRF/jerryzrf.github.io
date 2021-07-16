@@ -3,11 +3,11 @@
   <title>Blog</title>
   
   <subtitle>JerryZRF的Blog</subtitle>
-  <link href="https://jerryzrf.github.io/atom.xml" rel="self"/>
+  <link href="https://blog.jerryzrf.cf/atom.xml" rel="self"/>
   
-  <link href="https://jerryzrf.github.io/"/>
+  <link href="https://blog.jerryzrf.cf/"/>
   <updated>2021-07-16T09:39:32.760Z</updated>
-  <id>https://jerryzrf.github.io/</id>
+  <id>https://blog.jerryzrf.cf/</id>
   
   <author>
     <name>JerryZRF</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>基本算法-排序</title>
-    <link href="https://jerryzrf.github.io/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/"/>
-    <id>https://jerryzrf.github.io/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/</id>
+    <link href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/"/>
+    <id>https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/</id>
     <published>2021-07-16T08:15:30.000Z</published>
     <updated>2021-07-16T09:39:32.760Z</updated>
     
@@ -33,17 +33,17 @@
     
     
     
-    <category term="Cpp" scheme="https://jerryzrf.github.io/categories/Cpp/"/>
+    <category term="Cpp" scheme="https://blog.jerryzrf.cf/categories/Cpp/"/>
     
     
-    <category term="Cpp" scheme="https://jerryzrf.github.io/tags/Cpp/"/>
+    <category term="Cpp" scheme="https://blog.jerryzrf.cf/tags/Cpp/"/>
     
   </entry>
   
   <entry>
     <title>第一篇博文</title>
-    <link href="https://jerryzrf.github.io/2021/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/"/>
-    <id>https://jerryzrf.github.io/2021/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</id>
+    <link href="https://blog.jerryzrf.cf/2021/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/"/>
+    <id>https://blog.jerryzrf.cf/2021/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</id>
     <published>2021-07-14T13:03:05.000Z</published>
     <updated>2021-07-15T10:20:04.086Z</updated>
     
@@ -57,12 +57,12 @@
     
     
     
-    <category term="日志" scheme="https://jerryzrf.github.io/categories/%E6%97%A5%E5%BF%97/"/>
+    <category term="日志" scheme="https://blog.jerryzrf.cf/categories/%E6%97%A5%E5%BF%97/"/>
     
     
-    <category term="日志" scheme="https://jerryzrf.github.io/tags/%E6%97%A5%E5%BF%97/"/>
+    <category term="日志" scheme="https://blog.jerryzrf.cf/tags/%E6%97%A5%E5%BF%97/"/>
     
-    <category term="时刻" scheme="https://jerryzrf.github.io/tags/%E6%97%B6%E5%88%BB/"/>
+    <category term="时刻" scheme="https://blog.jerryzrf.cf/tags/%E6%97%B6%E5%88%BB/"/>
     
   </entry>
   
