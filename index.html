@@ -19,7 +19,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.jerryzrf.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.jerryzrf.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="Never Give Up!">
@@ -115,6 +115,11 @@
 
 <nav class="site-nav">
   <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
         <li class="menu-item menu-item-about">
 
     <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
@@ -167,10 +172,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -220,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-15 18:20:04" itemprop="dateModified" datetime="2021-07-15T18:20:04+08:00">2021-07-15</time>
+                <time title="修改时间：2021-07-17 18:39:56" itemprop="dateModified" datetime="2021-07-17T18:39:56+08:00">2021-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,7 +290,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-17 15:20:25 / 修改时间：16:00:22" itemprop="dateCreated datePublished" datetime="2021-07-17T15:20:25+08:00">2021-07-17</time>
+              <time title="创建时间：2021-07-17 15:20:25 / 修改时间：18:48:54" itemprop="dateCreated datePublished" datetime="2021-07-17T15:20:25+08:00">2021-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -312,42 +313,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="4-快速排序"><a href="#4-快速排序" class="headerlink" title="4 快速排序"></a>4 快速排序</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
-<ul>
-<li><p>不稳定</p>
-</li>
-<li><p>平均性能高</p>
-</li>
-</ul>
-</blockquote>
-<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><blockquote>
-<p>原始数据(8个)<br>X 4 8 3 2 5 1 6<br>基准值 X = 7</p>
-</blockquote>
-<blockquote>
-<p>第一次处理<br>6 4 8 3 2 5 1 X<br>i                      j</p>
-</blockquote>
-<blockquote>
-<p>第二次处理<br>6 4 X 3 2 5 1 8<br>       i               j</p>
-</blockquote>
-<blockquote>
-<p>第三次处理<br>6 4 1 3 2 5 X 8<br>       i               j</p>
-</blockquote>
-<blockquote>
-<p>第四次处理<br>6 4 1 3 2 5 X 8<br>                   ij</p>
-</blockquote>
-<blockquote>
-<p>放回原位</p>
-<p>6 4 1 3 2 5 7 8</p>
-</blockquote>
-<h3 id="演示解析"><a href="#演示解析" class="headerlink" title="演示解析"></a>演示解析</h3><blockquote>
-<p>经过处理，数据变成了<strong>两部分</strong>。在a[i]左侧的是比它小的数字，右侧的是比它大的数字<br>我们再将左侧进行处理，右侧进行处理，以此递归，直到<strong>左侧下标大于右侧下标</strong>，最终数据将变得有序</p>
-</blockquote>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Part</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> X = array[start];</span><br><span class="line">	<span class="keyword">while</span>(start &lt; end)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(array[end] &gt; X &amp;&amp; start &lt; end)             <span class="comment">//越界检查</span></span><br><span class="line">		&#123;</span><br><span class="line">			end--;                                       <span class="comment">//找到右侧第一个比参考值小的	</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(start &lt; end)                                  <span class="comment">//越界检查</span></span><br><span class="line">		&#123;</span><br><span class="line">			array[start] = array[end];                   <span class="comment">//交换</span></span><br><span class="line">			start++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(array[start] &lt; X &amp;&amp; start &lt; end)           <span class="comment">//越界检查</span></span><br><span class="line">		&#123;</span><br><span class="line">			start++;                                     <span class="comment">//找到左侧第一个比参考值大的	</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(start &lt; end)                                  <span class="comment">//越界检查</span></span><br><span class="line">		&#123;</span><br><span class="line">			array[end] = array[start];                   <span class="comment">//交换</span></span><br><span class="line">			end--;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//循环结束：start == end</span></span><br><span class="line">	array[start] = X;</span><br><span class="line">	<span class="keyword">return</span> start;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(start &gt;= end)                                     <span class="comment">//越界检查</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> part = <span class="built_in">Part</span>(array, start, end);</span><br><span class="line">    <span class="comment">//分治</span></span><br><span class="line">	<span class="built_in">Sort</span>(array, start, part - <span class="number">1</span>);                        <span class="comment">//左半边</span></span><br><span class="line">	<span class="built_in">Sort</span>(array, part + <span class="number">1</span>, end);                          <span class="comment">//右半边</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><blockquote>
-<p>快速排序是一种性能较高的排序。递归可能有点难以理解，最好自己拿数据试一试。<br>接下来还有快速、堆、桶排序等。</p>
-</blockquote>
-
+          <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="4-快速排序"><a href="#4-快速排序" class="headerlink" title="4 快速排序"></a>4 快速排序</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/17/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%BF%AB%E9%80%9F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -392,7 +366,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-17 13:20:02 / 修改时间：14:49:06" itemprop="dateCreated datePublished" datetime="2021-07-17T13:20:02+08:00">2021-07-17</time>
+              <time title="创建时间：2021-07-17 13:20:02 / 修改时间：18:48:36" itemprop="dateCreated datePublished" datetime="2021-07-17T13:20:02+08:00">2021-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -415,49 +389,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="3-插入排序"><a href="#3-插入排序" class="headerlink" title="3 插入排序"></a>3 插入排序</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
-<ul>
-<li>简单</li>
-<li>对少量数据性能较好</li>
-<li>稳定</li>
-</ul>
-</blockquote>
-<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><blockquote>
-<p>原始数据(8个)<br>7 4 8 3 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第一次排序<br>7 4 8 3 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第二次排序<br>4 7 8 3 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第三次排序<br>4 7 8 3 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第四次排序<br>3 4 7 8 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第五次排序<br>2 3 4 7 8 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第六次排序<br>2 3 4 5 7 8 1 6</p>
-</blockquote>
-<blockquote>
-<p>第七次排序<br>1 2 3 4 5 7 8 6</p>
-</blockquote>
-<blockquote>
-<p>第八次排序<br>1 2 3 4 5 6 7 8</p>
-</blockquote>
-<h3 id="演示解析"><a href="#演示解析" class="headerlink" title="演示解析"></a>演示解析</h3><blockquote>
-<p>第 i 次排序，是将a[i]从 i 向前移动 j 个数字，直到a[j]小于a[i]。</p>
-</blockquote>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> j;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; array[j] &lt; array[j - <span class="number">1</span>]; j--)  <span class="comment">//当a[j]大于a[j - i]且没越界</span></span><br><span class="line">			<span class="built_in">swap</span>(array[j], array[j - <span class="number">1</span>]);                      <span class="comment">//向后移动</span></span><br><span class="line">		array[j - <span class="number">1</span>] = array[i];                               <span class="comment">//填充空位</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><blockquote>
-<p>插入排序依旧是一中较为简单的排序，接下来还有快速、堆、桶排序等。</p>
-</blockquote>
-
+          <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="3-插入排序"><a href="#3-插入排序" class="headerlink" title="3 插入排序"></a>3 插入排序</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/17/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E6%8F%92%E5%85%A5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -502,7 +442,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-17 11:35:11 / 修改时间：14:49:22" itemprop="dateCreated datePublished" datetime="2021-07-17T11:35:11+08:00">2021-07-17</time>
+              <time title="创建时间：2021-07-17 11:35:11 / 修改时间：18:48:42" itemprop="dateCreated datePublished" datetime="2021-07-17T11:35:11+08:00">2021-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -525,42 +465,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
-<ul>
-<li>不稳定(<del>你也许没听懂</del>)</li>
-<li>较简单(至少我认为)</li>
-</ul>
-</blockquote>
-<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><blockquote>
-<p>原始数据(8个)<br>7 4 8 3 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第一次排序<br>1 4 8 3 2 5 7 6</p>
-</blockquote>
-<blockquote>
-<p>第二次排序<br>1 2 8 3 4 5 7 6</p>
-</blockquote>
-<blockquote>
-<p>第三次排序<br>1 2 3 8 4 5 7 6</p>
-</blockquote>
-<blockquote>
-<p>第四次排序<br>1 2 3 4 8 5 7 6</p>
-</blockquote>
-<blockquote>
-<p>第五次排序<br>1 2 3 4 5 8 7 6</p>
-</blockquote>
-<blockquote>
-<p>第六次排序<br>1 2 3 4 5 6 7 8</p>
-</blockquote>
-<h3 id="演示解析"><a href="#演示解析" class="headerlink" title="演示解析"></a>演示解析</h3><blockquote>
-<p>从数据变化中我们可以看出，每一次都选择了<strong>未排序</strong>的子序列中的最小值和当前<strong>要排序</strong>的值进行交换。</p>
-</blockquote>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FindiMin</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> n, <span class="keyword">int</span> start)</span>  <span class="comment">//找到array[start] ~ array[n - 1]中的最小值</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> imin = start;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = start + <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(array[i] &lt; array[imin])</span><br><span class="line">		&#123;</span><br><span class="line">			imin = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> imin;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> imin = <span class="built_in">FindiMin</span>(array, n, i);</span><br><span class="line">		<span class="built_in">swap</span>(array[imin], array[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><blockquote>
-<p>选择排序还是一种比较简单的排序方法，接下来还有插入、快速、堆、桶排序等</p>
-</blockquote>
-
+          <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/17/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E9%80%89%E6%8B%A9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -611,7 +524,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-17 14:49:11" itemprop="dateModified" datetime="2021-07-17T14:49:11+08:00">2021-07-17</time>
+                <time title="修改时间：2021-07-17 19:00:18" itemprop="dateModified" datetime="2021-07-17T19:00:18+08:00">2021-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -635,53 +548,17 @@
 
       
           <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>有人可能会说，STL库中不是有sort函数吗，为什么还有学排序呢？</p>
-<p>因为排序的基本算法还有很多功能，如快速排序的求第k小(大)的数、插入排序的一元多项式等等。</p>
+<p>有人可能会说，STL库中不是有sort函数吗，为什么还有学排序呢？<br>因为排序的基本算法还有很多功能，如快速排序的求第k小(大)的数、插入排序的一元多项式等等。</p>
 </blockquote>
-<h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
-<ul>
-<li>简单(至少我个人认为)</li>
-<li>稳定(<del>你也许没听懂</del>)</li>
-</ul>
-</blockquote>
-<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><blockquote>
-<p>原始数据(8个)<br>7 4 8 3 2 5 1 6</p>
-</blockquote>
-<blockquote>
-<p>第一次排序<br>4 7 3 2 5 1 6 8</p>
-</blockquote>
-<blockquote>
-<p>第二次排序<br>4 3 2 5 1 6 7 8</p>
-</blockquote>
-<blockquote>
-<p>第三次排序<br>3 2 4 1 5 6 7 8</p>
-</blockquote>
-<blockquote>
-<p>第四次排序<br>2 3 1 4 5 6 7 8</p>
-</blockquote>
-<blockquote>
-<p>第五次排序<br>2 1 3 4 5 6 7 8</p>
-</blockquote>
-<blockquote>
-<p>第六次排序<br>1 2 3 4 5 6 7 8</p>
-</blockquote>
-<h3 id="演示解析"><a href="#演示解析" class="headerlink" title="演示解析"></a>演示解析</h3><blockquote>
-<p>从数据变化中我们可以看出，小的数据一直再向前走，大的数据一直在向后走，就像泡泡一样，向上浮。</p>
-</blockquote>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="Version-1-基本版本"><a href="#Version-1-基本版本" class="headerlink" title="Version 1 基本版本"></a>Version 1 基本版本</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++)               <span class="comment">//需要走num遍排序</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num - <span class="number">1</span>; j++)       <span class="comment">//从0比较到num-1</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[j] &gt; array[j + <span class="number">1</span>])        <span class="comment">//和后面一个数比较</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">swap</span>(array[j], array[j + <span class="number">1</span>]);  <span class="comment">//交换</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p> 在这个版本中，我们可以看到需要走num遍排序，时间复杂度是O(num^2)。而像演示一样的情况中，后面两次其实是不用走到，所以我们就要一个判断，判断数据是否已经有序。</p>
-</blockquote>
-<h4 id="Version-2-改进版本"><a href="#Version-2-改进版本" class="headerlink" title="Version 2 改进版本"></a>Version 2 改进版本</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> flag;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		flag = <span class="literal">true</span>;                              <span class="comment">//是否有序</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num - <span class="number">1</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[j] &gt; array[j + <span class="number">1</span>])</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">swap</span>(array[j], array[j + <span class="number">1</span>]);</span><br><span class="line">				flag = <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag == <span class="literal">true</span>)                         <span class="comment">//已经有序</span></span><br><span class="line">			<span class="keyword">break</span>;                               <span class="comment">//跳出循环</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>有了有序特判，算法的性能有了小幅提高。</p>
-</blockquote>
-<h3 id="END"><a href="#END" class="headerlink" title="END"></a>END</h3><blockquote>
-<p>冒泡排序还是一种比较简单的排序方法，接下来还有选择、插入、快速、堆、桶排序等。</p>
-</blockquote>
-
+<h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/16/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -779,6 +656,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jerryzrf" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jerryzrf" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
 
 
   <div class="links-of-blogroll motion-element">
@@ -793,10 +675,17 @@
         <li class="links-of-blogroll-item">
           <a href="https://www.vijos.org/" title="https:&#x2F;&#x2F;www.vijos.org" rel="noopener" target="_blank">vijos</a>
         </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/" title="https:&#x2F;&#x2F;github.com" rel="noopener" target="_blank">github</a>
+        </li>
     </ul>
   </div>
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -814,15 +703,13 @@
 
 <div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; Thu Jul 15 2021 08:00:00 GMT+0800 (中国标准时间) – 
+  <span itemprop="copyrightYear">2021-07-17</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">JerryZRF</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-count">博客全站共1.5k字</span>
@@ -855,8 +742,26 @@ $(document).ready(function() {
     }
        	
 });
-</script> 
+</script>
 
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/07/2021 21:05:30");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -935,6 +840,7 @@ $(document).ready(function() {
   
 
   
+
 
 </body>
 </html>

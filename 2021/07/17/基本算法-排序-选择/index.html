@@ -19,18 +19,18 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.jerryzrf.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.jerryzrf.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="基本算法-排序2 选择排序特点  不稳定(你也许没听懂) 较简单(至少我认为)   演示 原始数据(8个)7 4 8 3 2 5 1 6   第一次排序1 4 8 3 2 5 7 6   第二次排序1 2 8 3 4 5 7 6   第三次排序1 2 3 8 4 5 7 6   第四次排序1 2 3 4 8 5 7 6   第五次排序1 2 3 4 5 8 7 6   第六次排序1 2 3 4 5">
+  <meta name="description" content="基本算法-排序2 选择排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基本算法-排序-选择">
 <meta property="og:url" content="https://blog.jerryzrf.cf/2021/07/17/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E9%80%89%E6%8B%A9/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="基本算法-排序2 选择排序特点  不稳定(你也许没听懂) 较简单(至少我认为)   演示 原始数据(8个)7 4 8 3 2 5 1 6   第一次排序1 4 8 3 2 5 7 6   第二次排序1 2 8 3 4 5 7 6   第三次排序1 2 3 8 4 5 7 6   第四次排序1 2 3 4 8 5 7 6   第五次排序1 2 3 4 5 8 7 6   第六次排序1 2 3 4 5">
+<meta property="og:description" content="基本算法-排序2 选择排序">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-17T03:35:11.000Z">
-<meta property="article:modified_time" content="2021-07-17T06:49:22.216Z">
+<meta property="article:modified_time" content="2021-07-17T10:48:42.465Z">
 <meta property="article:author" content="JerryZRF">
 <meta property="article:tag" content="Cpp">
 <meta property="article:tag" content="算法">
@@ -119,6 +119,11 @@
 
 <nav class="site-nav">
   <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
         <li class="menu-item menu-item-about">
 
     <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
@@ -171,10 +176,6 @@
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main class="main">
@@ -214,7 +215,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-07-17 11:35:11 / 修改时间：14:49:22" itemprop="dateCreated datePublished" datetime="2021-07-17T11:35:11+08:00">2021-07-17</time>
+              <time title="创建时间：2021-07-17 11:35:11 / 修改时间：18:48:42" itemprop="dateCreated datePublished" datetime="2021-07-17T11:35:11+08:00">2021-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,7 +245,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
+        <h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="2-选择排序"><a href="#2-选择排序" class="headerlink" title="2 选择排序"></a>2 选择排序</h2><span id="more"></span>
+
+
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
 <ul>
 <li>不稳定(<del>你也许没听懂</del>)</li>
 <li>较简单(至少我认为)</li>
@@ -305,8 +309,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Cpp/" rel="tag"># Cpp</a>
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/Cpp/" rel="tag"><i class="fa fa-tag"></i># Cpp</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i># 算法</a>
           </div>
 
         
@@ -334,6 +338,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -411,6 +416,11 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jerryzrf" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jerryzrf" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
 
 
   <div class="links-of-blogroll motion-element">
@@ -425,10 +435,17 @@
         <li class="links-of-blogroll-item">
           <a href="https://www.vijos.org/" title="https:&#x2F;&#x2F;www.vijos.org" rel="noopener" target="_blank">vijos</a>
         </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/" title="https:&#x2F;&#x2F;github.com" rel="noopener" target="_blank">github</a>
+        </li>
     </ul>
   </div>
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -446,15 +463,13 @@
 
 <div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  &copy; Thu Jul 15 2021 08:00:00 GMT+0800 (中国标准时间) – 
+  <span itemprop="copyrightYear">2021-07-17</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">JerryZRF</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-count">博客全站共1.5k字</span>
@@ -487,8 +502,26 @@ $(document).ready(function() {
     }
        	
 });
-</script> 
+</script>
 
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/07/2021 21:05:30");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -567,6 +600,26 @@ $(document).ready(function() {
   
 
   
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '63c74a7f072b244f1f1c',
+      clientSecret: '970fa88740d85abf778d8e6813bdf93885871b0a',
+      repo        : 'jerryzrf.github.io# Repository name to store issues',
+      owner       : 'JerryZRF',
+      admin       : [''],
+      id          : '7be4280e2496054106e98d047e3a6853',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
