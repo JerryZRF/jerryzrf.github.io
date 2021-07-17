@@ -24,18 +24,18 @@
 
   <meta name="description" content="基本算法-排序前言 有人可能会说，STL库中不是有sort函数吗，为什么还有学排序呢？ 因为排序的基本算法还有很多功能，如快速排序的求第k小(大)的数、插入排序的一元多项式等等。  1 冒泡排序特点：  简单(至少我个人认为) 稳定(你也许没听懂)   演示： 原始数据(8个)7 4 8 3 2 5 1 6   第一次排序4 7 3 2 5 1 6 8   第二次排序 4 3 2 5 1 6 7">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基本算法-排序">
-<meta property="og:url" content="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="基本算法-排序-冒泡">
+<meta property="og:url" content="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="基本算法-排序前言 有人可能会说，STL库中不是有sort函数吗，为什么还有学排序呢？ 因为排序的基本算法还有很多功能，如快速排序的求第k小(大)的数、插入排序的一元多项式等等。  1 冒泡排序特点：  简单(至少我个人认为) 稳定(你也许没听懂)   演示： 原始数据(8个)7 4 8 3 2 5 1 6   第一次排序4 7 3 2 5 1 6 8   第二次排序 4 3 2 5 1 6 7">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-16T08:15:30.000Z">
-<meta property="article:modified_time" content="2021-07-16T09:39:32.760Z">
+<meta property="article:modified_time" content="2021-07-17T03:43:12.891Z">
 <meta property="article:author" content="JerryZRF">
 <meta property="article:tag" content="Cpp">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/">
+<link rel="canonical" href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>基本算法-排序 | Blog</title>
+  <title>基本算法-排序-冒泡 | Blog</title>
   
 
 
@@ -188,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -201,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          基本算法-排序
+          基本算法-排序-冒泡
         </h1>
 
         <div class="post-meta">
@@ -211,10 +211,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-07-16 16:15:30 / 修改时间：17:39:32" itemprop="dateCreated datePublished" datetime="2021-07-16T16:15:30+08:00">2021-07-16</time>
+              <time title="创建时间：2021-07-16 16:15:30" itemprop="dateCreated datePublished" datetime="2021-07-16T16:15:30+08:00">2021-07-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-17 11:43:12" itemprop="dateModified" datetime="2021-07-17T11:43:12+08:00">2021-07-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -279,7 +285,7 @@
 <p>第六次排序</p>
 <p>1 2 3 4 5 6 7 8</p>
 </blockquote>
-<h3 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h3><blockquote>
+<h3 id="演示解析："><a href="#演示解析：" class="headerlink" title="演示解析："></a>演示解析：</h3><blockquote>
 <p>从数据变化中我们可以看出，小的数据一直再向前走，大的数据一直在向后走，就像泡泡一样，向上浮</p>
 </blockquote>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="Version-1-基本版本"><a href="#Version-1-基本版本" class="headerlink" title="Version 1 基本版本"></a>Version 1 基本版本</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(<span class="keyword">int</span> array[], <span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++)               <span class="comment">//需要走num遍排序</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num - <span class="number">1</span>; j++)       <span class="comment">//从0比较到num-1</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(array[j] &gt; array[j + <span class="number">1</span>])        <span class="comment">//和后面一个数比较</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">swap</span>(array[j], array[j + <span class="number">1</span>]);  <span class="comment">//交换</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -310,7 +316,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E6%8E%92%E5%BA%8F/" title="基本算法-排序">https://blog.jerryzrf.cf/2021/07/16/基本排序/</a>
+    <a href="https://blog.jerryzrf.cf/2021/07/16/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1/" title="基本算法-排序-冒泡">https://blog.jerryzrf.cf/2021/07/16/基本算法-排序-冒泡/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -333,7 +339,10 @@
     <a href="/2021/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/" rel="prev" title="第一篇博文">
       <i class="fa fa-chevron-left"></i> 第一篇博文
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/17/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E9%80%89%E6%8B%A9/" rel="next" title="基本算法-排序-选择">
+      基本算法-排序-选择 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -392,7 +401,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">基本算法-排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">1 冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">演示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%9A"><span class="nav-number">1.2.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Version-1-%E5%9F%BA%E6%9C%AC%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.1.</span> <span class="nav-text">Version 1 基本版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Version-2-%E6%94%B9%E8%BF%9B%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.2.</span> <span class="nav-text">Version 2 改进版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">基本算法-排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.2.</span> <span class="nav-text">1 冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%EF%BC%9A"><span class="nav-number">1.2.2.</span> <span class="nav-text">演示：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E8%A7%A3%E6%9E%90%EF%BC%9A"><span class="nav-number">1.2.3.</span> <span class="nav-text">演示解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Version-1-%E5%9F%BA%E6%9C%AC%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.1.</span> <span class="nav-text">Version 1 基本版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Version-2-%E6%94%B9%E8%BF%9B%E7%89%88%E6%9C%AC"><span class="nav-number">1.3.2.</span> <span class="nav-text">Version 2 改进版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -405,7 +414,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -469,7 +478,7 @@
   </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共524字</span>
+  <span class="post-count">博客全站共808字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
