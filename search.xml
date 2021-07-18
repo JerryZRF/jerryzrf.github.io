@@ -3,7 +3,7 @@
   <entry>
     <title>第一篇博文</title>
     <url>/2021/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E6%96%87/</url>
-    <content><![CDATA[<h1 id="第一篇博文"><a href="#第一篇博文" class="headerlink" title="第一篇博文"></a>第一篇博文</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>JerryZRF 的 Blog 的第一篇博文<br>发布于 2021-7-14 21:05</p>
+    <content><![CDATA[<h1 id="第一篇博文"><a href="#第一篇博文" class="headerlink" title="第一篇博文"></a>第一篇博文</h1><h2 id="hello-world"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>JerryZRF 的 Blog 的第一篇博文<br>发布于 2021-7-14 21:05</p>
 ]]></content>
       <categories>
         <category>日志</category>
@@ -309,9 +309,9 @@
       </tags>
   </entry>
   <entry>
-    <title>基本算法-排序-冒泡</title>
+    <title>算法-排序-冒泡</title>
     <url>/2021/07/16/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1/</url>
-    <content><![CDATA[<h1 id="基本算法-排序"><a href="#基本算法-排序" class="headerlink" title="基本算法-排序"></a>基本算法-排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+    <content><![CDATA[<h1 id="算法-排序"><a href="#算法-排序" class="headerlink" title="算法-排序"></a>算法-排序</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
 <p>有人可能会说，STL库中不是有sort函数吗，为什么还有学排序呢？<br>因为排序的基本算法还有很多功能，如快速排序的求第k小(大)的数、插入排序的一元多项式等等。</p>
 </blockquote>
 <h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1 冒泡排序"></a>1 冒泡排序</h2><span id="more"></span>
