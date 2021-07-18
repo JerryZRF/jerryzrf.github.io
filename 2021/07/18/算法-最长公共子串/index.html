@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.jerryzrf.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="算法-字符串1 最长公共子串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法-最长公共子串">
+<meta property="og:url" content="https://blog.jerryzrf.cf/2021/07/18/%E7%AE%97%E6%B3%95-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="算法-字符串1 最长公共子串">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-18T11:39:58.000Z">
+<meta property="article:modified_time" content="2021-07-18T12:28:35.593Z">
+<meta property="article:author" content="JerryZRF">
+<meta property="article:tag" content="Cpp">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.jerryzrf.cf/2021/07/18/%E7%AE%97%E6%B3%95-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>算法-最长公共子串 | Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">JerryZRF的Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.jerryzrf.cf/2021/07/18/%E7%AE%97%E6%B3%95-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JerryZRF">
+      <meta itemprop="description" content="Never Give Up!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法-最长公共子串
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-18 19:39:58 / 修改时间：20:28:35" itemprop="dateCreated datePublished" datetime="2021-07-18T19:39:58+08:00">2021-07-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cpp/" itemprop="url" rel="index"><span itemprop="name">Cpp</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="算法-字符串"><a href="#算法-字符串" class="headerlink" title="算法-字符串"></a>算法-字符串</h1><h2 id="1-最长公共子串"><a href="#1-最长公共子串" class="headerlink" title="1 最长公共子串"></a>1 最长公共子串</h2><span id="more"></span>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>在两个字符串中，找到最长公共子串(Longest Common Subsequence)的长度.<br><del>即最长的相同的一段的长度</del></p>
+</blockquote>
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><blockquote>
+<p>字符串A: “abcjerryzrfdef”<br>字符串B: “ajerryzrfbcdefgh”</p>
+<p>它们的最长公共子串的长度为7.</p>
+</blockquote>
+<h3 id="演示解析"><a href="#演示解析" class="headerlink" title="演示解析"></a>演示解析</h3><blockquote>
+<p>字符串A: “abc<strong>jerryzrf</strong>de”<br>字符串B: “a<strong>jerryzrf</strong>b”</p>
+<p>他们的最长公共子串为”jerryzrf”.</p>
+</blockquote>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="version-1-暴力枚举"><a href="#Version-1-暴力枚举" class="headerlink" title="Version 1 (暴力枚举)"></a>Version 1 (暴力枚举)</h4><p><del>暴力枚举yyds</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetLCSLength</span><span class="params">(string &amp;strA, string &amp;strB)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lengthA = strA.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">int</span> lengthB = strB.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">int</span> length = <span class="number">0</span>;     <span class="comment">//公共子串长度</span></span><br><span class="line">	<span class="keyword">int</span> MaxLength = <span class="number">0</span>;  <span class="comment">//最长公共子串长度</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lengthA; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; lengthB; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(strA[i] == strB[j] &amp;&amp; i &lt; lengthA &amp;&amp; j &lt; lengthB)  <span class="comment">//找到公共子序列</span></span><br><span class="line">			&#123;</span><br><span class="line">				i++;</span><br><span class="line">				j++;</span><br><span class="line">				length++;</span><br><span class="line">			&#125;</span><br><span class="line">			MaxLength = <span class="built_in">max</span>(length, MaxLength);                      <span class="comment">//更新最长公共子串长度</span></span><br><span class="line">			length = <span class="number">0</span>;                                              <span class="comment">//公共子串长度归零</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MaxLength;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以看到这种暴力枚举的性能在大量数据情况下很差，时间复杂度大概为O(lengthA * lengthB)，解析来我们用上另一种算法.</p>
+</blockquote>
+<h4 id="version-2-数组矩阵"><a href="#Version-2-数组矩阵" class="headerlink" title="Version 2 (数组矩阵)"></a>Version 2 (数组矩阵)</h4><blockquote>
+<p>求最长公共子串长度，就是求字符串A和字符串B中最长重复的地方的长度，于是我们可以摆出字符串A和字符串B中重复的地方，把它们放成矩阵.</p>
+<p>如</p>
+<p>字符串A: “abc<strong>jerryzrf</strong>de”<br>字符串B: “a<strong>jerryzrf</strong>b”</p>
+<p>​    a  b  c   j   e  r  r  y  z  r   f<br>a  1  0  0  0  0  0 0  0  0  0  0<br>j   0  0  0  <strong>1</strong>  0  0 0  0  0  0  0<br>e  0  0  0  0  <strong>1</strong>  0 0  0  0  0  0<br>r   0  0  0  0  0  <strong>1</strong> 1  0  0  1  1<br>r   0  0  0  0  0  1 <strong>1</strong>  0  0  1  1<br>y   0 0  0  0  0  0 0  <strong>1</strong>  0  0   0<br>z   0 0  0  0  0  0 0  0  <strong>1</strong>  0   0<br>r   0 0  0  0  0  0 0  0  0  <strong>1</strong>   0<br>f   0 0  0  0  0  0 0  0  0  0   <strong>1</strong><br>b  0 1  0  0  0  0 0  0  0  0   0</p>
+<p>从中我们可以发现，公共子串就是一条斜线.<br>所以我们可以写一个函数，求出每一条斜线中连续部分的长度，其中最长的，即为最长公共子串的长度</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在(lengthA * lengthB)的矩阵中，获取从 k 开始的斜线长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetObliqueLength</span><span class="params">(<span class="keyword">bool</span> matrix[][<span class="number">100001</span>], <span class="keyword">int</span> lengthA, <span class="keyword">int</span> lengthB, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">bool</span> ObliqueLine[<span class="number">100001</span>]; <span class="comment">//斜线</span></span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;              <span class="comment">//斜线长度</span></span><br><span class="line">	<span class="keyword">int</span> x, y;                 <span class="comment">//开始的(x, y)坐标</span></span><br><span class="line">	<span class="keyword">if</span>(k &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		x = -k;</span><br><span class="line">		y = <span class="number">0</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		x = <span class="number">0</span>;</span><br><span class="line">		y = k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(x &lt; lengthA &amp;&amp; y &lt; lengthB)</span><br><span class="line">	&#123;</span><br><span class="line">		ObliqueLine[cnt++] = matrix[x++][y++];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> length = <span class="number">0</span>;          <span class="comment">//连续斜线长度</span></span><br><span class="line">	<span class="keyword">int</span> MaxLength = <span class="number">0</span>;       <span class="comment">//最长连续斜线长度</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cnt; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(ObliqueLine[i] == <span class="literal">false</span>)              <span class="comment">//不连续</span></span><br><span class="line">		&#123;</span><br><span class="line">			MaxLength = <span class="built_in">max</span>(length, MaxLength);  <span class="comment">//更新最长连续斜线长度</span></span><br><span class="line">			length = <span class="number">0</span>;                          <span class="comment">//连续斜线长度归零</span></span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		length++;                                <span class="comment">//连续斜线长度增加</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">max</span>(length, MaxLength);               <span class="comment">//返回最长连续斜线长度</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取最长公共子串的长度</span></span><br><span class="line"><span class="comment">//Longest Common Subsequence</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetLCSLength</span><span class="params">(string &amp;strA, string &amp;strB)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lengthA = strA.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">int</span> lengthB = strB.<span class="built_in">length</span>();</span><br><span class="line">	<span class="comment">//转换为矩阵</span></span><br><span class="line">	<span class="keyword">bool</span> matrix[lengthA][<span class="number">100001</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lengthA; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; lengthB; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			matrix[i][j] = strA[i] == strB[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//找到最长连续子串</span></span><br><span class="line">	<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = -lengthA + <span class="number">1</span>; i &lt; lengthB; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> length = <span class="built_in">GetObliqueLength</span>(matrix, lengthA, lengthB, i);</span><br><span class="line">		max = (length &gt; max) ? length : max;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该版本用的是数组写的，<del>可能有点丑</del>，接下来是一个用vector写的.</p>
+</blockquote>
+<h4 id="version-3-vector矩阵"><a href="#Version-3-vector矩阵" class="headerlink" title="Version 3 (vector矩阵)"></a>Version 3 (vector矩阵)</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在(lengthA * lengthB)的矩阵中，获取从 k 开始的斜线长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetObliqueLength</span><span class="params">(vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; &amp;matrix, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	vector&lt;<span class="keyword">bool</span>&gt; ObliqueLine; <span class="comment">//斜线</span></span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;              <span class="comment">//斜线长度</span></span><br><span class="line">	<span class="keyword">int</span> x, y;                 <span class="comment">//开始的(x, y)坐标</span></span><br><span class="line">	<span class="keyword">if</span>(k &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		x = -k;</span><br><span class="line">		y = <span class="number">0</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		x = <span class="number">0</span>;</span><br><span class="line">		y = k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(x &lt; matrix.<span class="built_in">size</span>() &amp;&amp; y &lt; matrix[<span class="number">0</span>].<span class="built_in">size</span>())</span><br><span class="line">	&#123;</span><br><span class="line">		ObliqueLine.<span class="built_in">push_back</span>(matrix[x++][y++]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> length = <span class="number">0</span>;          <span class="comment">//连续斜线长度</span></span><br><span class="line">	<span class="keyword">int</span> MaxLength = <span class="number">0</span>;       <span class="comment">//最长连续斜线长度</span></span><br><span class="line">	<span class="keyword">for</span>(vector&lt;<span class="keyword">bool</span>&gt;::iterator it = ObliqueLine.<span class="built_in">begin</span>(); it != ObliqueLine.<span class="built_in">end</span>(); it++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(*it == <span class="literal">false</span>)                         <span class="comment">//不连续</span></span><br><span class="line">		&#123;</span><br><span class="line">			MaxLength = <span class="built_in">max</span>(length, MaxLength);  <span class="comment">//更新最长连续斜线长度</span></span><br><span class="line">			length = <span class="number">0</span>;                          <span class="comment">//连续斜线长度归零</span></span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		length++;                                <span class="comment">//连续斜线长度增加</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">max</span>(length, MaxLength);               <span class="comment">//返回最长连续斜线长度</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取最长公共子串的长度</span></span><br><span class="line"><span class="comment">//Longest Common Subsequence</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GetLCSLength</span><span class="params">(string &amp;strA, string &amp;strB)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lengthA = strA.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">int</span> lengthB = strB.<span class="built_in">length</span>();</span><br><span class="line">	<span class="comment">//转换为矩阵</span></span><br><span class="line">	vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">matrix</span>(lengthA, vector&lt;<span class="keyword">bool</span>&gt;(lengthB, <span class="literal">false</span>));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lengthA; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; lengthB; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			matrix[i][j] = strA[i] == strB[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//找到最长连续子串</span></span><br><span class="line">	<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = -lengthA + <span class="number">1</span>; i &lt; lengthB; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> length = <span class="built_in">GetObliqueLength</span>(matrix, i);</span><br><span class="line">		max = (length &gt; max) ? length : max;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>别忘了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="end"><a href="#END" class="headerlink" title="END"></a>END</h3><blockquote>
+<p>本文就到这里了，接下来你可以自己写一个函数，求出最长公共子串和其长度.<br><del>暴力枚举yyds!</del></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>JerryZRF
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://blog.jerryzrf.cf/2021/07/18/%E7%AE%97%E6%B3%95-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2/" title="算法-最长公共子串">https://blog.jerryzrf.cf/2021/07/18/算法-最长公共子串/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Cpp/" rel="tag"><i class="fa fa-tag"></i># Cpp</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/18/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F-%E5%A0%86/" rel="prev" title="算法-排序-堆">
+      <i class="fa fa-chevron-left"></i> 算法-排序-堆
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">算法-字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E4%B8%B2"><span class="nav-number">1.1.</span> <span class="nav-text">1 最长公共子串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA"><span class="nav-number">1.1.2.</span> <span class="nav-text">演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%94%E7%A4%BA%E8%A7%A3%E6%9E%90"><span class="nav-number">1.1.3.</span> <span class="nav-text">演示解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.1.4.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#version-1-%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Version 1 (暴力枚举)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version-2-%E6%95%B0%E7%BB%84%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Version 2 (数组矩阵)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#version-3-vector%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">Version 3 (vector矩阵)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#end"><span class="nav-number">1.1.5.</span> <span class="nav-text">END</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JerryZRF</p>
+  <div class="site-description" itemprop="description">Never Give Up!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jerryzrf" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jerryzrf" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.luogu.com.cn/" title="https:&#x2F;&#x2F;www.luogu.com.cn" rel="noopener" target="_blank">洛谷</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.vijos.org/" title="https:&#x2F;&#x2F;www.vijos.org" rel="noopener" target="_blank">vijos</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/" title="https:&#x2F;&#x2F;github.com" rel="noopener" target="_blank">github</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; Thu Jul 15 2021 08:00:00 GMT+0800 (中国标准时间) – 
+  <span itemprop="copyrightYear">2021-07-18</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JerryZRF</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共3.3k字</span>
+</div>
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script>
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/07/2021 21:05:30");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '63c74a7f072b244f1f1c',
+      clientSecret: '970fa88740d85abf778d8e6813bdf93885871b0a',
+      repo        : 'JerryZRF.github.io',
+      owner       : 'JerryZRF',
+      admin       : ['JerryZRF'],
+      id          : 'af4c77aea4e0e304c6fb7cd832f8609f',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
