@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"blog.jerryzrf.cf","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="算法-贪心 1 最短路径长度">
+  <meta name="description" content="算法-贪心1 最短路径长度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法-最短路径长度">
 <meta property="og:url" content="https://blog.jerryzrf.cf/2021/07/28/%E7%AE%97%E6%B3%95-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%95%BF%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="算法-贪心 1 最短路径长度">
+<meta property="og:description" content="算法-贪心1 最短路径长度">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-28T02:18:39.000Z">
 <meta property="article:modified_time" content="2021-07-28T03:19:08.712Z">
@@ -245,49 +245,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="算法-贪心">算法-贪心</h1>
-<h2 id="1-最短路径长度">1 最短路径长度</h2>
-<span id="more"></span>
-<h3 id="简介">简介</h3>
-<blockquote>
-<p>给定一个n * n的矩阵M，其中 (i, j) 表示 i 到 j 的距离为M[i][j]<br>
-求start到各个点的最短路径长度</p>
+        <h1 id="算法-贪心"><a href="#算法-贪心" class="headerlink" title="算法-贪心"></a>算法-贪心</h1><h2 id="1-最短路径长度"><a href="#1-最短路径长度" class="headerlink" title="1 最短路径长度"></a>1 最短路径长度</h2><span id="more"></span>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>给定一个n * n的矩阵M，其中 (i, j) 表示 i 到 j 的距离为M[i][j]<br>求start到各个点的最短路径长度</p>
 </blockquote>
-<h3 id="演示">演示</h3>
-<blockquote>
-<p>0   999   10  999   30  100<br>
-999    0    5  999 999  999<br>
-999 999   0    50 999  999<br>
-999 999 999    0 999    10<br>
-999 999 999  20     0     60<br>
-999 999 999  999 999    0<br>
-(999表示无路可走)</p>
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><blockquote>
+<p>0   999   10  999   30  100<br>999    0    5  999 999  999<br>999 999   0    50 999  999<br>999 999 999    0 999    10<br>999 999 999  20     0     60<br>999 999 999  999 999    0<br>(999表示无路可走)</p>
 <p>以0为起点的最短路径长度是0  999  10  50  30  60</p>
 </blockquote>
-<h3 id="演示解析">演示解析</h3>
-<blockquote>
-<p>0：0 -&gt; 0<br>
-​       0 + 0 = 0</p>
-<p>1：0 -&gt; 1<br>
-​      0 + 999 = 999(无路可走)</p>
-<p>2：0 -&gt; 2<br>
-​      0 + 10 = 10</p>
-<p>3：0 -&gt; 2 -&gt; 3              ||  0 -&gt; 4 -&gt; 3<br>
-​      0 + 10 + 50 = 60    ||  0 + 20 + 30 = 50</p>
-<p>4：0 -&gt; 4<br>
-​       0 + 30 = 30</p>
-<p>5：0 -&gt; 2 -&gt; 3 -&gt; 5                || 0 -&gt; 4 -&gt; 3 -&gt; 5<br>
-​      0 + 10 + 50 + 10 = 70    ||  0 + 20 + 30 + 10 = 60</p>
+<h3 id="演示解析"><a href="#演示解析" class="headerlink" title="演示解析"></a>演示解析</h3><blockquote>
+<p>0：0 -&gt; 0<br>​       0 + 0 = 0</p>
+<p>1：0 -&gt; 1<br>​      0 + 999 = 999(无路可走)</p>
+<p>2：0 -&gt; 2<br>​      0 + 10 = 10</p>
+<p>3：0 -&gt; 2 -&gt; 3              ||  0 -&gt; 4 -&gt; 3<br>​      0 + 10 + 50 = 60    ||  0 + 20 + 30 = 50</p>
+<p>4：0 -&gt; 4<br>​       0 + 30 = 30</p>
+<p>5：0 -&gt; 2 -&gt; 3 -&gt; 5                || 0 -&gt; 4 -&gt; 3 -&gt; 5<br>​      0 + 10 + 50 + 10 = 70    ||  0 + 20 + 30 + 10 = 60</p>
 </blockquote>
-<h3 id="思路">思路</h3>
-<blockquote>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><blockquote>
 <p>我们先把start到各点的路径长度当作最短路径长度，再找到其中的最小值Min，计算经过Min后的路径长度，和本来的长度比较，取出最小值.</p>
 <p>其中我们还要一个标记向量vis，当 i 为最小值时，vis[i] 为 true，其后就不再更改.</p>
 </blockquote>
-<h3 id="实现">实现</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FindMinIndex</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;v, vector&lt;<span class="keyword">bool</span>&gt; &amp;vis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> MinIndex = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(vis[MinIndex] == <span class="literal">true</span>)  <span class="comment">//跳过已固定的路径长度</span></span><br><span class="line">	&#123;	MinIndex++;	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = MinIndex + <span class="number">1</span>; i &lt; v.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[i] == <span class="literal">true</span>)       <span class="comment">//跳过已固定的路径长度</span></span><br><span class="line">		&#123;	<span class="keyword">continue</span>;	&#125;</span><br><span class="line">		<span class="keyword">if</span>(v[i] &lt; v[MinIndex])</span><br><span class="line">		&#123;	MinIndex = i;	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MinIndex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Path[i][j]: i到j的路径长度</span></span><br><span class="line"><span class="comment">// Length[i]: start到i的最短路径长度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;Paths, vector&lt;<span class="keyword">int</span>&gt; &amp;Length, <span class="keyword">int</span> start)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">vis</span><span class="params">(Paths.size(), <span class="literal">false</span>)</span></span>;    <span class="comment">//已固定标记</span></span><br><span class="line">	vis[start] = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">int</span> MinIndex;</span><br><span class="line">	Length = Paths[start];                    <span class="comment">//初始化最短路径长度</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; Paths.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		MinIndex = <span class="built_in">FindMinIndex</span>(Length, vis); <span class="comment">//start到MinIndex最短</span></span><br><span class="line">		vis[MinIndex] = <span class="literal">true</span>;                 <span class="comment">//标记</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; Length.<span class="built_in">size</span>(); j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(vis[j] == <span class="literal">true</span>)                <span class="comment">//跳过已固定的路径长度</span></span><br><span class="line">			&#123;	<span class="keyword">continue</span>;	&#125;                 <span class="comment">//更新从start出发的最短路径长度</span></span><br><span class="line">			Length[j] = <span class="built_in">min</span>(Paths[MinIndex][j] + Length[MinIndex], Length[j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="end">END</h3>
-<blockquote>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FindMinIndex</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;v, vector&lt;<span class="keyword">bool</span>&gt; &amp;vis)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> MinIndex = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(vis[MinIndex] == <span class="literal">true</span>)  <span class="comment">//跳过已固定的路径长度</span></span><br><span class="line">	&#123;	MinIndex++;	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = MinIndex + <span class="number">1</span>; i &lt; v.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(vis[i] == <span class="literal">true</span>)       <span class="comment">//跳过已固定的路径长度</span></span><br><span class="line">		&#123;	<span class="keyword">continue</span>;	&#125;</span><br><span class="line">		<span class="keyword">if</span>(v[i] &lt; v[MinIndex])</span><br><span class="line">		&#123;	MinIndex = i;	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> MinIndex;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Path[i][j]: i到j的路径长度</span></span><br><span class="line"><span class="comment">// Length[i]: start到i的最短路径长度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;Paths, vector&lt;<span class="keyword">int</span>&gt; &amp;Length, <span class="keyword">int</span> start)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">vis</span><span class="params">(Paths.size(), <span class="literal">false</span>)</span></span>;    <span class="comment">//已固定标记</span></span><br><span class="line">	vis[start] = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">int</span> MinIndex;</span><br><span class="line">	Length = Paths[start];                    <span class="comment">//初始化最短路径长度</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; Paths.<span class="built_in">size</span>(); i++)</span><br><span class="line">	&#123;</span><br><span class="line">		MinIndex = <span class="built_in">FindMinIndex</span>(Length, vis); <span class="comment">//start到MinIndex最短</span></span><br><span class="line">		vis[MinIndex] = <span class="literal">true</span>;                 <span class="comment">//标记</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; Length.<span class="built_in">size</span>(); j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(vis[j] == <span class="literal">true</span>)                <span class="comment">//跳过已固定的路径长度</span></span><br><span class="line">			&#123;	<span class="keyword">continue</span>;	&#125;                 <span class="comment">//更新从start出发的最短路径长度</span></span><br><span class="line">			Length[j] = <span class="built_in">min</span>(Paths[MinIndex][j] + Length[MinIndex], Length[j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="end"><a href="#END" class="headerlink" title="END"></a>END</h3><blockquote>
 <p>本文就到这里了，接下来你可以自己写一个函数，求出怎么走是最短路径.</p>
 </blockquote>
 
@@ -479,7 +460,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共8.4k字</span>
+  <span class="post-count">博客全站共8.3k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
